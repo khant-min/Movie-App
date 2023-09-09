@@ -1,4 +1,5 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import HomeScreen from "./screens/HomeScreen";
+import DetailScreen from "./screens/DetailScreen";
+import ContactScreen from "./screens/ContactScreen";
 
-export { Header, Footer };
+export { HomeScreen, DetailScreen, ContactScreen };

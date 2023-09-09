@@ -1,5 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://api.themoviedb.org/3/discover/movie",
+  baseURL: process.env.EXPO_PUBLIC_MOVIE_API_URL,
+  headers: {
+    Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`,
+  },
 });

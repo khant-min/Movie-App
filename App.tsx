@@ -1,21 +1,32 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { NativeBaseProvider, Box } from "native-base";
-import { Footer, Header } from "./src";
+import { NativeBaseProvider } from "native-base";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ContactScreen, DetailScreen, HomeScreen } from "./src";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Box style={styles.screenWrapper}>
-        <Header />
-        <Footer />
-      </Box>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Detail"
+            component={DetailScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Contact"
+            component={ContactScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  screenWrapper: {
-    margin: 25,
-  },
-});
