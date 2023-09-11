@@ -1,34 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 import { useAuth } from "../context/DataContext";
-import { MovieProps } from "../types";
-import axios, { AxiosHeaders } from "axios";
-import { useEffect } from "react";
+import { DataContextProps, MovieDataProps } from "../types";
 
 export default function Movies() {
-  //   const { data } = useAuth() as MovieProps;
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const movies = await axios.get(
-          "https://api.themoviedb.org/3/discover/movie",
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`,
-            },
-          }
-        );
-        console.log("data: ", movies);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetchMovies();
-  }, []);
+  const { movies } = useAuth() as DataContextProps;
+  console.log("test moveis", movies);
 
   return (
     <View>
-      <Text>Movies</Text>
+      {movies.map((movie: MovieDataProps, i: number) => (
+        <Text key={i}>{movie.overview}</Text>
+      ))}
     </View>
   );
 }
