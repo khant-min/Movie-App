@@ -11,6 +11,7 @@ export const DataProvider: React.FC<ChildrenProps> = ({ children }) => {
     (async () => {
       const { data } = await axios.get("/");
       setMovies(data.results);
+      // console.log("all movies", movies);
     })();
   }, []);
 
